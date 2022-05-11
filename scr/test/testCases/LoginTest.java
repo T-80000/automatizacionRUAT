@@ -1,16 +1,21 @@
-package test.testCases;
+package testCases;
 
-public class LoginTest {
+import org.testng.annotations.Test;
+import tasks.Login;
 
-	public LoginTest() {
+public class LoginTest extends baseTest.BaseTest {
+
+	@Test
+	public void LoginTest() {
 		
 		//Arrange
-		
+		String usuario = "AALCAZAR.LPZ";
+		String pasword = "A12345678";
 		// parametros de entrada o variables
 		
 		//Act
 		
-		// Login.as(webdriver, usuario, contraseña);
+		 Login.as(webDriver, usuario,pasword);
 		
 		//Assert
 		

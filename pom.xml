@@ -49,6 +49,17 @@
 			<artifactId>ojdbc6</artifactId>
 			<version>11.2.0.4</version>
 		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.14.3</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>5.0.3</version>
+		</dependency>
 	</dependencies>
 	<artifactId>calidad</artifactId>
 </project>

@@ -1,4 +1,4 @@
-package main.helpers.common;
+package helpers.common;
 
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
@@ -17,6 +17,7 @@ import java.util.Hashtable;
 import java.util.StringTokenizer;
 import java.util.concurrent.ThreadLocalRandom;
 
+import helpers.common.CommonConstans;
 import org.apache.pdfbox.cos.COSDocument;
 import org.apache.pdfbox.io.RandomAccessFile;
 import org.apache.pdfbox.pdfparser.PDFParser;
@@ -325,8 +326,8 @@ public class CommonComponent
 		{
 			switch ( palabra.charAt ( caracter_i ) )
 			{
-				case 'Á': palabraSinAcentos.append ( 'A' ); break;
-				case 'É': palabraSinAcentos.append ( 'E' ); break;
+				/*case 'Á': palabraSinAcentos.append ( 'A' ); break;
+				//case 'É': palabraSinAcentos.append ( 'E' ); break;
 				case 'Í': palabraSinAcentos.append ( 'I' ); break;
 				case 'Ó': palabraSinAcentos.append ( 'O' ); break;
 				case 'Ú': palabraSinAcentos.append ( 'U' ); break;
@@ -335,7 +336,7 @@ public class CommonComponent
 				case 'í': palabraSinAcentos.append ( 'i' ); break;
 				case 'ó': palabraSinAcentos.append ( 'o' ); break;
 				case 'ú': palabraSinAcentos.append ( 'u' ); break;
-				default : palabraSinAcentos.append ( palabra.charAt ( caracter_i ) );
+				default : palabraSinAcentos.append ( palabra.charAt ( caracter_i ) );*/
 			}		
 		}
 		
@@ -419,6 +420,59 @@ public class CommonComponent
 		}
 		
 		return listaNumeros;
+	}
+
+	public static void registrarEnLog(String msgLog)
+	{
+		File           log      = new File(CommonConstans.DIRECTORIO_PROYECTO_INMUEBLES.concat("logs/").concat(CommonConstans.ARCHIVO_LOG));
+		BufferedWriter escritor = null;
+
+		try
+		{
+			escritor = new BufferedWriter(new FileWriter(log, true));
+			msgLog   = getFechaHoraActual().concat(": ").concat(msgLog); //09/10/2018
+			if(msgLog.contains("\n"))
+			{
+				escritor.newLine();
+				escritor.write(msgLog.replaceAll("\n", ""));
+			}
+			else
+				escritor.write(msgLog);
+
+			escritor.newLine();
+			escritor.close();
+			System.out.println(msgLog);
+		}
+		catch (IOException archivoNoEncontradoExcepcion)
+		{
+			//throw new AssertionFailedError("ERROR: I/O - Archivo no encontrado o no es posible leer/escribir en él.");
+		}
+	}
+
+	public static String getFechaHoraActual()
+	{
+		return new SimpleDateFormat(CommonConstans.MASCARA_FECHA_HORA).format(Calendar.getInstance().getTime());
+	}
+
+	public static String convertirAFormatoFecha(String fechaFormatoDistinto)
+	{
+		final String MASCARA_FECHA_ORIGEN = "yyyy-MM-dd";
+
+		String fechaConFormato = "";
+
+		DateFormat formatoOrigen  = new SimpleDateFormat(MASCARA_FECHA_ORIGEN);
+		DateFormat formatoDestino = new SimpleDateFormat(CommonConstans.MASCARA_FECHA);
+		formatoOrigen.setLenient(false);
+		formatoDestino.setLenient(false);
+		try
+		{
+			fechaConFormato = formatoDestino.format(formatoOrigen.parse(fechaFormatoDistinto));
+		}
+		catch (ParseException parseoExcepcion)
+		{
+			parseoExcepcion.printStackTrace();
+		}
+		return fechaConFormato;
 	}
 	
 }
