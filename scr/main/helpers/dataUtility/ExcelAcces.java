@@ -1,11 +1,11 @@
-package main.helpers.dataUtility;
+package helpers.dataUtility;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
 public class ExcelAcces {
-	private ExcelReader lectorExcel;
+	private main.helpers.dataUtility.ExcelReader lectorExcel;
 	private Hashtable<String, ArrayList<String>> atributos;
 	private Object datos[][];
 
@@ -16,14 +16,14 @@ public class ExcelAcces {
 	
 	public ExcelAcces(String archivo, int nroHoja)
 	{
-		lectorExcel = new ExcelReader("./data/"+archivo, nroHoja);
+		lectorExcel = new main.helpers.dataUtility.ExcelReader("./data/"+archivo, nroHoja);
 		atributos   = new Hashtable<String, ArrayList<String>>();	
 		cargarDatos();
 	}
 	
 	public ExcelAcces(String archivo, String hoja)
 	{
-		lectorExcel = new ExcelReader("./data/"+archivo, hoja);
+		lectorExcel = new main.helpers.dataUtility.ExcelReader("./data/"+archivo, hoja);
 		atributos   = new Hashtable<String, ArrayList<String>>();	
 		cargarDatos();
 	}

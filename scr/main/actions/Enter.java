@@ -16,6 +16,6 @@ public class Enter {
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(localizador));
         element.clear();
         element.sendKeys(texto);
-        //webDriver.findElement(localizador).sendKeys(texto);
+
     }
 }

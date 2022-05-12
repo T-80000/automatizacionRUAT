@@ -5,7 +5,7 @@ public class CommonConstans {
   // TODO Auto-generated constructor stub
 
   public static final String  DIRECTORIO_REPORTES                                      = System.getProperty("user.home").replace('\\', '/') + "/Downloads/";
-  public static final String  DIRECTORIO_PROYECTO_INMUEBLES                            = System.getProperty("user.dir").replace('\\', '/') + "/";
+  public static final String  DIRECTORIO_PROYECTOS                            = System.getProperty("user.dir").replace('\\', '/') + "/";
   public static final String  GECKO_DRIVER                                             = "./resource/geckodriver.exe";
 
   public static final int     TIME_OUT                                                 = 60;

@@ -23,9 +23,11 @@ import org.apache.pdfbox.io.RandomAccessFile;
 import org.apache.pdfbox.pdfparser.PDFParser;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class CommonComponent 
 {
+
 	public static String getNroAleatorio (int nroDigitos)
 	{
 		StringBuilder numAleatorio = new StringBuilder();
@@ -327,7 +329,7 @@ public class CommonComponent
 			switch ( palabra.charAt ( caracter_i ) )
 			{
 				/*case 'Á': palabraSinAcentos.append ( 'A' ); break;
-				//case 'É': palabraSinAcentos.append ( 'E' ); break;
+				case 'É': palabraSinAcentos.append ( 'E' ); break;
 				case 'Í': palabraSinAcentos.append ( 'I' ); break;
 				case 'Ó': palabraSinAcentos.append ( 'O' ); break;
 				case 'Ú': palabraSinAcentos.append ( 'U' ); break;
@@ -422,15 +424,15 @@ public class CommonComponent
 		return listaNumeros;
 	}
 
-	public static void registrarEnLog(String msgLog)
+	public static void RecordInLog(String msgLog)
 	{
-		File           log      = new File(CommonConstans.DIRECTORIO_PROYECTO_INMUEBLES.concat("logs/").concat(CommonConstans.ARCHIVO_LOG));
+		File           log      = new File(CommonConstans.DIRECTORIO_PROYECTOS.concat("logs/").concat(CommonConstans.ARCHIVO_LOG));
 		BufferedWriter escritor = null;
 
 		try
 		{
 			escritor = new BufferedWriter(new FileWriter(log, true));
-			msgLog   = getFechaHoraActual().concat(": ").concat(msgLog); //09/10/2018
+			msgLog   = getFechaHoraActual().concat(": ").concat(msgLog);
 			if(msgLog.contains("\n"))
 			{
 				escritor.newLine();
@@ -474,5 +476,9 @@ public class CommonComponent
 		}
 		return fechaConFormato;
 	}
-	
+
+	public void StartCommonLog()
+	{
+		System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, CommonConstans.DIRECTORIO_LOGS.concat(CommonConstans.ARCHIVO_LOG_GECKODRIVER));
+	}
 }

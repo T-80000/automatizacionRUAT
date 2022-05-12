@@ -1,27 +1,28 @@
 package tasks;
 
-import helpers.common.CommonComponent;
-import helpers.commonInmuebles.ComponentCommonInmuebles;
+import actions.LogEnvironment;
+import actions.LogTime;
+import actions.LogWrite;
+import com.aventstack.extentreports.Status;
+import helpers.dataUtility.ScreenShotHelper;
 import org.openqa.selenium.WebDriver;
 
-import main.actions.Click;
+import actions.Click;
 import main.actions.Enter;
 import main.ui.LoginUI;
 
-public class Login extends ComponentCommonInmuebles
+public class Login
 {
-
-
 	  public static void as(WebDriver driver, String user, String password) {
-		  long tiempoEjecucionInicial = 0;
-		  tiempoEjecucionInicial = System.currentTimeMillis();
-          new ComponentCommonInmuebles();
+		  LogEnvironment.on ("IMPLANTACION");
+		  LogTime.start();
           Enter.text(driver, LoginUI.userInput, user);
 		  Enter.text(driver, LoginUI.passwordInput, password);
+		  ScreenShotHelper.takeScreenShotAndAdToHTMLReport(driver, Status.INFO,"Login");
 		  Click.on(driver, LoginUI.loginButton);
-		  CommonComponent.registrarEnLog(" Generar Login: ...OK");
-		  CommonComponent.registrarEnLog("TIEMPO EJECUCION TOTAL: ".concat(CommonComponent.formatearTiempoEjecucion(System.currentTimeMillis() - tiempoEjecucionInicial)));
-		}
+		  LogWrite.with("Generar Login... OK");
+		  LogTime.end();
+	 }
 
 }
  

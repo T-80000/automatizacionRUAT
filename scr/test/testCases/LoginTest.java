@@ -23,7 +23,7 @@ public class LoginTest extends baseTest.BaseTest {
 		
 		// Assert.true(condicion,esperado);
 		Assert.assertTrue(true);
-		CommonComponent.registrarEnLog(" prueba del registro del assert: ...OK");
+		CommonComponent.RecordInLog(" prueba del registro del assert: ...OK");
 		
 
 	}
