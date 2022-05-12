@@ -19,8 +19,8 @@ public class Login extends ComponentCommonInmuebles
           Enter.text(driver, LoginUI.userInput, user);
 		  Enter.text(driver, LoginUI.passwordInput, password);
 		  Click.on(driver, LoginUI.loginButton);
-		  CommonComponent.registrarEnLog(" Generar Login: ...");
-		  CommonComponent.registrarEnLog("TIEMPO EJECUCIÓN TOTAL: ".concat(CommonComponent.formatearTiempoEjecucion(System.currentTimeMillis() - tiempoEjecucionInicial)));
+		  CommonComponent.registrarEnLog(" Generar Login: ...OK");
+		  CommonComponent.registrarEnLog("TIEMPO EJECUCION TOTAL: ".concat(CommonComponent.formatearTiempoEjecucion(System.currentTimeMillis() - tiempoEjecucionInicial)));
 		}
 
 }

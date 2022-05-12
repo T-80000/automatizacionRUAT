@@ -1,5 +1,7 @@
 package testCases;
 
+import helpers.common.CommonComponent;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import tasks.Login;
 
@@ -20,6 +22,8 @@ public class LoginTest extends baseTest.BaseTest {
 		//Assert
 		
 		// Assert.true(condicion,esperado);
+		Assert.assertTrue(true);
+		CommonComponent.registrarEnLog(" prueba del registro del assert: ...OK");
 		
 
 	}

@@ -1,6 +1,10 @@
 package baseTest;
 
+import com.aventstack.extentreports.Status;
+import helpers.dataUtility.ReportManager;
+import helpers.dataUtility.ScreenShotHelper;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -33,15 +37,15 @@ public class BaseTest {
         sheet = wb.getSheet("libro1");
     }*/
 
-
-   /* public static void setUpSuite() throws Exception {
+    @BeforeSuite
+    public static void setUpSuite() throws Exception {
         ReportManager.init("C:\\Reports", "LoginSite");
-    }*/
+    }
 
     @BeforeMethod
     public void configurar(ITestResult iTestResult){
 
-       // ReportManager.getInstance().startTest(iTestResult.getMethod().getMethodName());
+        ReportManager.getInstance().startTest(iTestResult.getMethod().getMethodName());
 
         //String urlDominioAmbiente = "https://vehiculosacepta.ruat.gob.bo";
         String urlDominioAmbiente = "https://inmueblescalidad.ruat.gob.bo";
@@ -53,7 +57,7 @@ public class BaseTest {
         webDriver.manage().window().maximize();
     }
 
-    /*@AfterMethod
+    @AfterMethod
     public void concluir(ITestResult iTestResult){
         try {
             switch (iTestResult.getStatus()){
@@ -83,14 +87,12 @@ public class BaseTest {
             if(webDriver != null)
               webDriver.quit();
         }
-    }*/
+    }
 
-    /*@AfterSuite
+    @AfterSuite
     public static void tearDownSuite(){
      ReportManager.getInstance().flush();
-
-
-    }*/
+    }
  
 
 	
